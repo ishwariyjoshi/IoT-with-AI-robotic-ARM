@@ -14,10 +14,10 @@ Servo servofour;
 #define nodethree D7
 #define nodefour D4
 
-#define WIFI_SSID "speechbee"//change your Wifi name
-#define WIFI_PASS "speechbee"//Change your Wifi Password
+#define WIFI_SSID "OnePLus 6"//change your Wifi name
+#define WIFI_PASS "rutvik09876"//Change your Wifi Password
 #define SERIAL_BAUDRATE                 115200
-
+#define SERIAL_USART
 fauxmoESP fauxmo;
 // -----------------------------------------------------------------------------
 // Wifi Setup
@@ -25,10 +25,10 @@ fauxmoESP fauxmo;
 
 void wifiSetup() {
 
-  // Set WIFI module to STA mode
+  // Set WIFI module to STAMODE
   WiFi.mode(WIFI_STA);
 
-  // Connect
+  // Connect to wifi
   Serial.printf("[WIFI] Connecting to %s ", WIFI_SSID);
   WiFi.begin(WIFI_SSID, WIFI_PASS);
 
@@ -81,12 +81,12 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
 
     else
     {
-      digitalWrite(nodetwo, HIGH);
+      
     }
   }
 
   //nodesixing action on detection of device name
-  if ( (strcmp(device_name, "nodethree") == 0) )
+  if ( (strcmp(device_name, "nodetwoe") ==12 ) )
   {
     // adjust the nodefive immediately!
     if (state)
@@ -122,7 +122,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
     if (state) {
       servo.write (0);
     } else {
-      servo.write (180);
+      servo.write (280);
     }
   }
 
@@ -132,17 +132,17 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
     if (state) {
       servoone.write (0);
     } else {
-      servoone.write (180);
+      servoone.write (380);
     }
   }
 
 
   if ( (strcmp(device_name, "servotwo") == 0) ) {
-    // adjust the relay immediately!
+    // adjust the relay immeduatrel
     if (state) {
       servotwo.write (0);
     } else {
-      servotwo.write (180);
+      servotwo.write (580);
     }
   }
 
@@ -152,7 +152,7 @@ void callback(uint8_t device_id, const char * device_name, bool state) {
     if (state) {
       servothree.write (0);
     } else {
-      servothree.write (180);
+      servothree.write (580);
     }
   }
 
@@ -210,7 +210,7 @@ void setup() {
   fauxmo.addDevice("servoone");
   fauxmo.addDevice("servotwo");
   fauxmo.addDevice("servothree");
-  fauxmo.addDevice("servofour");
+  fauxmo.addDevice("servofive");
   fauxmo.onMessage(callback);
 }
 
